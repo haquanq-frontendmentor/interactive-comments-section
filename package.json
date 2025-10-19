@@ -1,5 +1,8 @@
 {
   "name": "interactive-comments-section",
+  "description": "Solution for frontendmentor.io challenge: interactive-comments-section",
+  "author": "haquanq",
+  "license": "MIT",
   "private": true,
   "version": "0.0.0",
   "type": "module",
