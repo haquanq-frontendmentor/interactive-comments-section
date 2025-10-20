@@ -8,10 +8,10 @@ let localCommentId = 69;
 
 const commentRepliesMap: Record<number, number> = {};
 
-data.comments.forEach((v) => {
+data.comments.forEach((v, index) => {
     if (v.replies)
         v.replies.forEach((vv) => {
-            commentRepliesMap[vv.id] = v.id;
+            commentRepliesMap[vv.id] = index;
         });
 });
 
@@ -75,6 +75,7 @@ export const useCommentStore = defineStore("comments", () => {
 
     const updateComment = (commentId: number, content: string) => {
         const currentComment = findComment(commentId);
+        console.log(currentComment.content, content);
         currentComment.content = content;
     };
 
