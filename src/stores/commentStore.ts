@@ -83,9 +83,12 @@ export const useCommentStore = defineStore("comments", () => {
     };
 
     const upvoteComment = (commentId: number) => {
-        const { voteComment } = useUserStore();
-        const voteStatus = voteComment(commentId, "upvote");
+        const { voteComment, currentUser } = useUserStore();
         const currentComment = findComment(commentId);
+
+        if (currentUser.username === currentComment.user.username) return;
+
+        const voteStatus = voteComment(commentId, "upvote");
 
         if (voteStatus === "new") {
             currentComment.score++;
@@ -97,9 +100,12 @@ export const useCommentStore = defineStore("comments", () => {
     };
 
     const downvoteComment = (commentId: number) => {
-        const { voteComment } = useUserStore();
-        const voteStatus = voteComment(commentId, "downvote");
+        const { voteComment, currentUser } = useUserStore();
         const currentComment = findComment(commentId);
+
+        if (currentUser.username === currentComment.user.username) return;
+
+        const voteStatus = voteComment(commentId, "downvote");
 
         if (voteStatus === "new") {
             currentComment.score--;
