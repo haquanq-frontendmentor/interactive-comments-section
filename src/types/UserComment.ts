@@ -1,11 +1,11 @@
 import type { User } from "./User";
 
-export type CommentThread = {
+export type UserComment = {
     id: number;
     content: string;
     createdAt: string;
     score: number;
     user: User;
-    replies?: CommentThread[];
+    replies?: UserComment[];
     replyingTo?: string;
 };
