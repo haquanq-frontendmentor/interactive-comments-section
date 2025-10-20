@@ -39,7 +39,6 @@ export const useUserStore = defineStore("current-user", () => {
             votedComments.value[commentId] = command;
         }
 
-        console.log(result);
         return result;
     };
 
