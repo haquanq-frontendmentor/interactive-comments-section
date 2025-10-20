@@ -34,28 +34,32 @@ export const useCommentStore = defineStore("comments", () => {
         return currentComment;
     };
 
-    const addComment = (content: string, replyingTo?: { username: string; parentCommentId: number }) => {
+    const addComment = (content: string, replyingToCommentId?: number) => {
         const { currentUser } = useUserStore();
+
+        console.log(content, replyingToCommentId);
 
         const newComment: UserComment = {
             id: ++localCommentId,
-            createdAt: new Date().toLocaleString(),
+            createdAt: "Sometimes ago",
             content,
             score: 0,
             user: currentUser,
         };
 
-        if (replyingTo) {
-            const currentCommentThread = comments.value.find((v) => v.id === replyingTo.parentCommentId);
-            if (!currentCommentThread)
-                throw new Error("Comment thread with id: " + replyingTo.parentCommentId + " not found!");
+        if (replyingToCommentId) {
+            const replyingToComment = findComment(replyingToCommentId);
+            let currentCommentThread = null;
 
-            if (!currentCommentThread.replies) {
-                currentCommentThread.replies = [];
+            if (replyingToCommentId in commentRepliesMap) {
+                currentCommentThread = comments.value[commentRepliesMap[replyingToCommentId] as number];
             }
 
-            newComment.replyingTo = replyingTo.username;
+            if (!currentCommentThread) return;
+            if (!currentCommentThread.replies) currentCommentThread.replies = [];
+            newComment.replyingTo = replyingToComment.user.username;
             currentCommentThread.replies.push(newComment);
+            commentRepliesMap[newComment.id] = commentRepliesMap[replyingToCommentId] as number;
         } else {
             comments.value.push(newComment);
         }
