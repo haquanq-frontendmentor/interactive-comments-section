@@ -79,7 +79,6 @@ export const useCommentStore = defineStore("comments", () => {
 
     const updateComment = (commentId: number, content: string) => {
         const currentComment = findComment(commentId);
-        console.log(currentComment.content, content);
         currentComment.content = content;
     };
 
