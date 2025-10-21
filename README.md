@@ -94,4 +94,4 @@ pnpm dev
 
 ## :maple_leaf: Deployment
 
-Deployed to Github Pages via Github Actions (manually trigg
+Deployed to Github Pages via Github Actions (manually triggered).
