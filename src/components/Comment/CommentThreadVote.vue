@@ -8,7 +8,7 @@ import { cn } from "../../utils/cn";
 const { commentId, score } = defineProps<{ commentId: number; score: number }>();
 
 const baseClass =
-  "aspect-square focus:outline-2 aria-selected:text-purple-600 aria-selected:[&_svg]:scale-110 focus:-outline-offset-2 focus:outline-purple-600 h-10 transition-colors rounded-[inherit] flex items-center justify-center text-purple-200";
+  "aspect-square focus:outline-2 aria-pressed:text-purple-600 aria-selected:[&_svg]:scale-110 focus:-outline-offset-2 focus:outline-purple-600 h-10 transition-colors rounded-[inherit] flex items-center justify-center text-purple-200";
 
 const upvoteButtonClass = computed(() => cn(baseClass, {}));
 const downvoteButtonClass = computed(() => cn(baseClass, {}));
