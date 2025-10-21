@@ -37,8 +37,6 @@ export const useCommentStore = defineStore("comments", () => {
     const addComment = (content: string, replyingToCommentId?: number) => {
         const { currentUser } = useUserStore();
 
-        console.log(content, replyingToCommentId);
-
         const newComment: UserComment = {
             id: ++localCommentId,
             createdAt: "Sometimes ago",
@@ -71,9 +69,15 @@ export const useCommentStore = defineStore("comments", () => {
             if (!currentCommentThread)
                 throw new Error("Comment thread with id: " + commentRepliesMap[commentId] + " not found!");
 
-            currentCommentThread.replies = currentCommentThread.replies?.filter((v) => v.id !== commentId);
+            currentCommentThread.replies?.splice(
+                currentCommentThread.replies?.findIndex((v) => v.id === commentId),
+                1,
+            );
         } else {
-            comments.value = comments.value.filter((v) => v.id !== commentId);
+            comments.value.splice(
+                comments.value.findIndex((v) => v.id === commentId),
+                1,
+            );
         }
     };
 
