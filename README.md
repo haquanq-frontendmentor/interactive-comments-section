@@ -20,6 +20,8 @@ This is a solution to the [Interactive comments section challenge on Frontend Me
   /></a>
 </p>
 
+![](./docs/preview.jpg)
+
 ## Table of Contents
 
 - [Project Overview](#sunrise-project-overview)
@@ -49,9 +51,7 @@ Accessibility
 - [x] Responsive accross different screen sizes
 - [x] Added custom indicator when interactive elements focused
 
-### Preview
 
-![](./docs/preview.jpg)
 
 ## :stars: Tech Stack and Approach
 
@@ -94,4 +94,4 @@ pnpm dev
 
 ## :maple_leaf: Deployment
 
-Deployed to Github Pages via Github Actions (manually triggered).
+Deployed to Github Pages via Github Action.
